@@ -63,13 +63,12 @@ class Devices:
 	# this only works if it isn't already registered. 
 	# @pre Generate a captcha at https://signalcaptchas.org/registration/generate.html, then copy the link from the 'Open Signal'-button 
 	# @param	captcha		The link from the button, obtainable as described in the preconditions
-	# @param	use_voice	<b>(Optional)</b> Defines if the verification code should be send as SMS or as a phone call. This argument defaults to @p False
+	# @param	use_voice	<b>(Optional)</b> Defines if the verification code should be send as SMS or as a phone call. This argument defaults to @p False. !Special care needs to be taken if you want to verify via phone call; you first have to make a verification request with use_voice=False, wait min. 60 seconds and then make another verification requests with use_voice=True; otherwise you get an error and it won't work!
 	# @return Either a @p dict in json format or a @p str
 	# @author Felix Hune
 	# @version 1.0
 	# @date 2022-12-18
 	def register(self, captcha: str, use_voice: bool=False) -> Union[dict, str]:
-		captcha = captcha.replace("signalcaptcha://", "")
 		r = requests.post(f"{self.address}:{self.port}/v1/register/{self.number}", headers={'Content-Type': 'application/json'}, json={"captcha": captcha, "use_voice": use_voice})
 		try:
 			r = r.json()
