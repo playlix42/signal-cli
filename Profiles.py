@@ -7,7 +7,7 @@ from typing import Union
 # @details This class handles a collection of all functions that are listed in the Profiles section in the documentation of the signal-cli-rest-api
 # @author Felix Hune
 # @version 1.1
-# @date 2022-12-25
+# @date 2023-11-19
 class Profiles:
 	
 	def __init__(self, Client):
@@ -20,15 +20,15 @@ class Profiles:
 	# @param	**name		<b>(Optional)</b> The new name of the user associated with the number in the config. 
 	# As this is a keyword argument, it has to be specified with <tt>name=\<name\></tt>, the data type is @p str. <b>One of the both arguments is necessary, two are optional!</b>
 	# @param	**avatar	<b>(Optional)</b> The new avatar of the user associated with the number in the config as base64 string.
-	# As this is a keyword argument, it has to be specified with <tt>avatar=\<avatar\></tt>, the data type is @p str. <b>One of the both arguments is necessary, two are optional!</b>
+	# As this is a keyword argument, it has to be specified with <tt>avatar=\<avatar\></tt>, the data type is @p str. <b>If this argument is specified, name has to be specified, too!</b> 
 	# @return Either a @p dict in json format or a @p str. 
 	# @author Felix Hune
 	# @version 1.0
-	# @date 2022-12-18	
+	# @date 2023-11-19
 	def update_profile(self, **kwargs) -> Union[dict, str]:
+        name = None
+        avatar = None
 		for key, value in kwargs.items():
-			name = None
-			avatar = None
 			if key == "name":
 				name = value
 			elif key == "avatar":

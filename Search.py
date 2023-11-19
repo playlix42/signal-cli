@@ -16,7 +16,7 @@ class Search:
 		self.number = Client.get_number()
 	
 	## @brief Search numbers
-	# @details Calls the API checking if the given numbers are registered with the Signal service or not. This isn't working correctly (2022-12-18)
+	# @details Calls the API checking if the given numbers are registered with the Signal service or not.
 	# @param	numbers	List of phone numbers to check
 	# @return Either a @list with @dicts or a @dict
 	# @author Felix Hune

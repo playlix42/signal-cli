@@ -7,7 +7,7 @@ from typing import Union
 # @details This class handles a collection of all functions that are listed in the Contacts section in the documentation of the signal-cli-rest-api
 # @author Felix Hune
 # @version 1.1
-# @date 2022-12-25
+# @date 2023-11-19
 class Contacts:
 	
 	def __init__(self, Client):
@@ -34,3 +34,19 @@ class Contacts:
 		except:
 			r = r.text
 		return r
+        
+    ## @brief Synchronisize contacts
+    # @details Calls the api to send a synchronization message with the local contacts list to all linked devices (use if this is the primary device)
+    # @return Either a @p dict in json format or a @p str
+    # @author Felix Hune
+    # @version 1.0
+    # @date 2023-11-19
+    def sync_contacts(self) -> Union[dict, str]:
+        
+        r = requests.post(f"{self.address}:{self.port}/v1/contacts/{self.number}/sync", headers={"Content-Type": "application/json"})
+        
+        try:
+            r = r.json()
+        except:
+            r = r.text
+        return r

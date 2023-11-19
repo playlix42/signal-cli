@@ -38,8 +38,8 @@ class Groups:
 	# @param	perm_edit_group		<b>(Optional)</b>Defines who is allowed to edit the group. This argument defaults to @p only-admins.
 	# @return A @p dict in json format
 	# @author Felix Hune
-	# @version 1.0
-	# @date 2022-12-18
+	# @version 1.1
+	# @date 2023-11-13
 	def create_group(
 		self,
 		name: str,
@@ -49,7 +49,7 @@ class Groups:
 		perm_add_members: str="only-admins",
 		perm_edit_group: str="only-admins"		
 	) -> dict:
-		r = requests.post(f"{self.address}:{self.port}/v1/groups/{self.number}", headers={'Content-Type': 'application/json'}, json={"description": description, "group_link": create_group, "members": members, "name": name, "permissions": {"add_members": perm_add_members, "edit_group": perm_edit_group}})
+		r = requests.post(f"{self.address}:{self.port}/v1/groups/{self.number}", headers={'Content-Type': 'application/json'}, json={"description": description, "group_link": group_link, "members": members, "name": name, "permissions": {"add_members": perm_add_members, "edit_group": perm_edit_group}})
 		
 		r = r.json()
 		return r

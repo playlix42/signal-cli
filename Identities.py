@@ -7,7 +7,7 @@ from typing import Union
 # @details This class handles a collection of all functions that are listed in the Identities section in the documentation of the signal-cli-rest-api
 # @author Felix Hune
 # @version 1.1
-# @date 2022-12-25
+# @date 2023-11-19
 class Identities:
 	
 	def __init__(self, Client):
@@ -19,9 +19,9 @@ class Identities:
 	# @details Calls the API to list all identities of known numbers
 	# @return A @p list with dicts
 	# @author Felix Hune
-	# @version 1.0
-	# @date 2022-12-18	
-	def list_identites(self) -> list[dict]:
+	# @version 1.1
+	# @date 2023-11-19	
+	def list_identities(self) -> list[dict]:
 		r = requests.get(f"{self.address}:{self.port}/v1/identities/{self.number}", headers={"Content-Type": "application/json"})
 		
 		r = r.json()

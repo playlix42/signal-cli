@@ -18,7 +18,7 @@ class Reactions:
 	## @brief Send Reaction
 	# @details Calls the API to send a reaction on a message in a chat
 	# @param	reaction		The reaction to send. This has to be the Emoji as the Emoji character, not a unicode code
-	# @param	recipient		The number of the recipient chat, maybe also a chat id?
+	# @param	recipient		The number or the group id of the recipient chat
 	# @param	target_author	The number of the target author who wrote the message
 	# @param	timestamp		The timestamp when the message was sent
 	# @return Either a @p dict in json format or a @p str
